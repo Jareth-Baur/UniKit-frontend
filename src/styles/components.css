@@ -157,6 +157,34 @@
   font-weight: 600;
 }
 
+.tool-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  color: var(--color-primary);
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.tool-card-link:hover {
+  gap: 9px;
+}
+
+.tool-card-category {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--color-primary);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
 /* ------------------------------------------------------- Card ------------------------------------------------------*/
 
 .card {

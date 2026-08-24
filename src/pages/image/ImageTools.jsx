@@ -1,94 +1,37 @@
 import { Link } from "react-router-dom";
 
-import ToolGrid from "../components/tools/ToolGrid";
-import { tools } from "../config/tools";
+import ToolGrid from "../../components/tools/ToolGrid";
+import { tools } from "../../config/tools";
 
-function Home() {
-  const availableTools = tools.filter(
-    (tool) => tool.available
-  );
-
-  const comingSoonTools = tools.filter(
-    (tool) => !tool.available
+function ImageTools() {
+  const imageTools = tools.filter(
+    (tool) => tool.category === "image"
   );
 
   return (
-    <div className="page home-page">
+    <div className="page category-page">
 
-      <section className="hero-section">
+      <section className="category-header">
 
-        <span className="hero-badge">
-          Free student utilities
+        <span className="section-label">
+          IMAGE
         </span>
 
         <h1>
-          Useful tools.
-          <br />
-          <span>Absolutely free.</span>
+          Image Tools
         </h1>
 
         <p>
-          UniKit provides simple tools for students
-          to work with images, documents, audio, and
-          more without expensive subscriptions.
+          Free tools for editing, converting, and
+          processing images.
         </p>
 
-        <div className="hero-actions">
-          <Link
-            to="/image/background-remover"
-            className="btn btn-primary"
-          >
-            Try Background Remover
-          </Link>
-        </div>
-
       </section>
 
-      <section className="tools-section">
-
-        <div className="section-header">
-          <div>
-            <span className="section-label">
-              AVAILABLE NOW
-            </span>
-
-            <h2>
-              Student Tools
-            </h2>
-          </div>
-
-          <p>
-            Simple tools designed for everyday
-            student work.
-          </p>
-        </div>
-
-        <ToolGrid tools={availableTools} />
-
-      </section>
-
-      {comingSoonTools.length > 0 && (
-        <section className="tools-section">
-
-          <div className="section-header">
-            <div>
-              <span className="section-label">
-                COMING SOON
-              </span>
-
-              <h2>
-                More Tools
-              </h2>
-            </div>
-          </div>
-
-          <ToolGrid tools={comingSoonTools} />
-
-        </section>
-      )}
+      <ToolGrid tools={imageTools} />
 
     </div>
   );
 }
 
-export default Home;
+export default ImageTools;
