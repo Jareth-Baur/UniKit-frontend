@@ -1,23 +1,22 @@
-function ErrorMessage({
-  message,
-  className = "",
-}) {
-  if (!message) {
-    return null;
-  }
+import { LoaderCircle } from "lucide-react";
 
+function LoadingSpinner({
+  label = "Processing...",
+}) {
   return (
     <div
-      className={`error-message ${className}`}
-      role="alert"
+      className="loading-spinner"
+      role="status"
+      aria-live="polite"
     >
-      <span className="error-message-icon">
-        !
-      </span>
+      <LoaderCircle
+        className="loading-spinner-icon"
+        size={32}
+      />
 
-      <span>{message}</span>
+      <span>{label}</span>
     </div>
   );
 }
 
-export default ErrorMessage;
+export default LoadingSpinner;

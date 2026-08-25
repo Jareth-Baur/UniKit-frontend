@@ -1,12 +1,23 @@
-function Card({
-  children,
+function ErrorMessage({
+  message,
   className = "",
 }) {
+  if (!message) {
+    return null;
+  }
+
   return (
-    <div className={`card ${className}`}>
-      {children}
+    <div
+      className={`error-message ${className}`}
+      role="alert"
+    >
+      <span className="error-message-icon">
+        !
+      </span>
+
+      <span>{message}</span>
     </div>
   );
 }
 
-export default Card;
+export default ErrorMessage;
