@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { NavLink } from "react-router-dom";
+
 import { navigation } from "../../config/navigation";
 import MobileMenu from "./MobileMenu";
 
@@ -11,21 +13,25 @@ function Navbar() {
     <>
       <header className="navbar">
         <div className="navbar-container">
-          <Link
+          <NavLink
             to="/"
             className="navbar-logo"
             onClick={() => setMobileOpen(false)}
           >
-            UniKit
-          </Link>
+            <img src="/unikit-logo.png" alt="" className="navbar-logo-icon" />
+
+            <span>UniKit</span>
+          </NavLink>
 
           <nav className="navbar-links">
-            <Link to="/">Home</Link>
+            <NavLink to="/" end>
+              Home
+            </NavLink>
 
             {navigation.map((category) => (
-              <Link key={category.id} to={category.path}>
+              <NavLink key={category.id} to={category.path}>
                 {category.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
