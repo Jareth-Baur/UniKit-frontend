@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { FileUp } from "lucide-react";
 
 function FileDropzone({
   onFileSelect,
@@ -43,6 +44,7 @@ function FileDropzone({
 
   function handleDragLeave(event) {
     event.preventDefault();
+
     setIsDragging(false);
   }
 
@@ -64,9 +66,18 @@ function FileDropzone({
     }
   }
 
+  function handleKeyDown(event) {
+    if (
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
+      event.preventDefault();
+      openFilePicker();
+    }
+  }
+
   return (
     <div className="file-upload-wrapper">
-
       <div
         className={[
           "file-dropzone",
@@ -76,32 +87,30 @@ function FileDropzone({
         ]
           .filter(Boolean)
           .join(" ")}
-
         onClick={openFilePicker}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-
+        onKeyDown={handleKeyDown}
         role="button"
         tabIndex={disabled ? -1 : 0}
-
-        onKeyDown={(event) => {
-          if (
-            event.key === "Enter" ||
-            event.key === " "
-          ) {
-            openFilePicker();
-          }
-        }}
+        aria-disabled={disabled}
       >
-
         <div className="file-dropzone-icon">
-          ↑
+          <FileUp size={26} strokeWidth={2} />
         </div>
 
-        <h3>{title}</h3>
+        <div className="file-dropzone-content">
+          <h3>{title}</h3>
 
-        <p>{description}</p>
+          <p>
+            {description}
+          </p>
+        </div>
+
+        <span className="file-dropzone-browse">
+          Browse files
+        </span>
 
         <input
           ref={inputRef}
@@ -112,7 +121,6 @@ function FileDropzone({
           onChange={handleInputChange}
           hidden
         />
-
       </div>
 
       {error && (
@@ -120,7 +128,6 @@ function FileDropzone({
           {error}
         </p>
       )}
-
     </div>
   );
 }

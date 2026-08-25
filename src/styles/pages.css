@@ -668,3 +668,208 @@
     min-height: 260px;
   }
 }
+
+
+/* =========================================
+   SHARED TOOL WORKSPACE
+========================================= */
+
+.tool-workspace {
+  width: 100%;
+
+  padding: 28px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 18px;
+
+  background: var(--color-surface);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.tool-workspace .tool-actions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+
+/* =========================================
+   FILE INFORMATION
+========================================= */
+
+.tool-workspace .file-info {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 20px;
+
+  padding: 14px 16px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 12px;
+
+  background: var(--color-surface-soft);
+}
+
+.tool-workspace .file-info strong {
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: var(--color-text);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.tool-workspace .file-info span {
+  flex-shrink: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+}
+
+/* =========================================
+   IMAGE WORKSPACE
+========================================= */
+
+.image-processing-area,
+.ocr-workspace {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.image-processing-area .file-info {
+  margin-bottom: 0;
+}
+
+.image-preview {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 300px;
+
+  padding: 20px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 14px;
+
+  background: #f8fafc;
+}
+
+.image-preview img {
+  display: block;
+
+  max-width: 100%;
+  max-height: 420px;
+
+  object-fit: contain;
+
+  border-radius: 8px;
+}
+
+/* =========================================
+   AUDIO WORKSPACE
+========================================= */
+
+.audio-workspace {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.audio-workspace .file-info {
+  margin-bottom: 0;
+}
+
+.audio-player {
+  width: 100%;
+
+  display: block;
+}
+
+/* =========================================
+   OCR WORKSPACE
+========================================= */
+
+.ocr-workspace {
+  min-height: 300px;
+}
+
+/* =========================================
+   RESPONSIVE TOOL WORKSPACES
+========================================= */
+
+@media (max-width: 640px) {
+  .tool-workspace {
+    padding: 20px;
+
+    border-radius: 16px;
+  }
+
+  .tool-workspace .file-info {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    padding: 12px 14px;
+  }
+
+  .tool-workspace .file-info strong {
+    width: 100%;
+  }
+
+  .tool-workspace .tool-actions {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .tool-workspace .tool-actions .btn {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .image-preview {
+    min-height: 220px;
+
+    padding: 14px;
+  }
+
+  .image-preview img {
+    max-height: 300px;
+  }
+
+  .audio-player {
+    width: 100%;
+  }
+}

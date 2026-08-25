@@ -128,7 +128,7 @@ function OCRScanner() {
         description="Extract text from images using optical character recognition."
       />
 
-      <Card className="tool-card-container">
+      {/* <Card className="tool-card-container"> */}
         {!file && (
           <FileDropzone
             accept="image/jpeg,image/png,image/webp"
@@ -141,7 +141,7 @@ function OCRScanner() {
         {error && <ErrorMessage message={error} />}
 
         {file && !result && (
-          <div className="ocr-workspace">
+          <div className="tool-workspace ocr-workspace">
             <div className="image-preview">
               <img src={previewUrl} alt="OCR source" />
             </div>
@@ -225,7 +225,7 @@ function OCRScanner() {
             </div>
           </div>
         )}
-      </Card>
+      {/* </Card> */}
     </div>
   );
 }

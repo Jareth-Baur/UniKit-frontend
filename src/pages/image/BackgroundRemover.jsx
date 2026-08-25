@@ -38,8 +38,7 @@ function BackgroundRemover() {
       return;
     }
 
-    const validationError =
-      validateImage(selectedFile);
+    const validationError = validateImage(selectedFile);
 
     if (validationError) {
       setFile(null);
@@ -52,8 +51,7 @@ function BackgroundRemover() {
       URL.revokeObjectURL(previewUrl);
     }
 
-    const newPreviewUrl =
-      URL.createObjectURL(selectedFile);
+    const newPreviewUrl = URL.createObjectURL(selectedFile);
 
     setFile(selectedFile);
     setPreviewUrl(newPreviewUrl);
@@ -69,22 +67,18 @@ function BackgroundRemover() {
     setIsProcessing(true);
 
     try {
-      const resultBlob =
-        await removeBackground(file);
+      const resultBlob = await removeBackground(file);
 
       if (resultUrl) {
         URL.revokeObjectURL(resultUrl);
       }
 
-      const newResultUrl =
-        URL.createObjectURL(resultBlob);
+      const newResultUrl = URL.createObjectURL(resultBlob);
 
       setResultUrl(newResultUrl);
-
     } catch (err) {
       setError(
-        err.message ||
-        "Something went wrong while removing the background."
+        err.message || "Something went wrong while removing the background.",
       );
     } finally {
       setIsProcessing(false);
@@ -124,15 +118,13 @@ function BackgroundRemover() {
 
   return (
     <div className="page tool-page">
-
       <ToolHeader
         category="IMAGE TOOL"
         title="Background Remover"
         description="Remove the background from an image automatically and download the result as a transparent PNG."
       />
 
-      <Card className="tool-card-container">
-
+      {/* <Card className="tool-card-container"> */}
         {!file && (
           <FileDropzone
             accept="image/jpeg,image/png,image/webp"
@@ -142,103 +134,61 @@ function BackgroundRemover() {
           />
         )}
 
-        {error && (
-          <ErrorMessage message={error} />
-        )}
+        {error && <ErrorMessage message={error} />}
 
         {file && !resultUrl && (
-          <div className="image-processing-area">
-
+          <div className="tool-workspace image-processing-area">
             <div className="image-preview">
-
-              <img
-                src={previewUrl}
-                alt="Selected image"
-              />
-
+              <img src={previewUrl} alt="Selected image" />
             </div>
 
             <div className="file-info">
-
-              <strong>
-                {file.name}
-              </strong>
+              <strong>{file.name}</strong>
 
               <span>
                 {(file.size / 1024 / 1024).toFixed(2)}
                 {" MB"}
               </span>
-
             </div>
 
             {isProcessing ? (
-              <LoadingSpinner
-                label="Removing background..."
-              />
+              <LoadingSpinner label="Removing background..." />
             ) : (
               <div className="tool-actions">
-
-                <Button
-                  onClick={handleRemoveBackground}
-                >
+                <Button onClick={handleRemoveBackground}>
                   Remove Background
                 </Button>
 
-                <Button
-                  variant="secondary"
-                  onClick={handleReset}
-                >
+                <Button variant="secondary" onClick={handleReset}>
                   Choose Another
                 </Button>
-
               </div>
             )}
-
           </div>
         )}
 
         {resultUrl && (
           <div className="result-area">
-
             <div className="result-header">
-              <h2>
-                Background Removed
-              </h2>
+              <h2>Background Removed</h2>
 
-              <p>
-                Your image is ready.
-              </p>
+              <p>Your image is ready.</p>
             </div>
 
             <div className="result-preview">
-              <img
-                src={resultUrl}
-                alt="Background removed result"
-              />
+              <img src={resultUrl} alt="Background removed result" />
             </div>
 
             <div className="tool-actions">
+              <Button onClick={handleDownload}>Download PNG</Button>
 
-              <Button
-                onClick={handleDownload}
-              >
-                Download PNG
-              </Button>
-
-              <Button
-                variant="secondary"
-                onClick={handleReset}
-              >
+              <Button variant="secondary" onClick={handleReset}>
                 Process Another
               </Button>
-
             </div>
-
           </div>
         )}
-
-      </Card>
-
+      {/* </Card> */}
     </div>
   );
 }

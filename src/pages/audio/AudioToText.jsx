@@ -127,12 +127,12 @@ function AudioToText() {
         description="Convert speech and recordings into text using AI-powered transcription."
       />
 
-      <Card className="tool-card-container">
+      {/* <Card className="tool-card-container"> */}
         {!file && (
           <FileDropzone
             accept="audio/*,video/mp4,video/webm"
             onFileSelect={handleFileSelect}
-            title="Drop your audio here"
+            title="Drop your audio file here"
             description="MP3, WAV, M4A, WebM, or MP4 • Maximum 100 MB"
           />
         )}
@@ -140,7 +140,7 @@ function AudioToText() {
         {error && <ErrorMessage message={error} />}
 
         {file && !result && (
-          <div className="audio-workspace">
+          <div className="tool-workspace audio-workspace">
             <div className="file-info">
               <strong>{file.name}</strong>
 
@@ -260,7 +260,7 @@ function AudioToText() {
             )}
           </div>
         )}
-      </Card>
+      {/* </Card> */}
     </div>
   );
 }
